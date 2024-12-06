@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ClinicaStomatologicaPentruMedici.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ClinicaStomatologicaPentruMediciContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ClinicaStomatologicaPentruMediciContext") ?? throw new InvalidOperationException("Connection string 'ClinicaStomatologicaPentruMediciContext' not found.")));
 
 var app = builder.Build();
 
