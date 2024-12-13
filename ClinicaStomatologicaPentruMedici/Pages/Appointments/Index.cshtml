@@ -35,10 +35,10 @@
 @foreach (var item in Model.Appointment) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Patients.Allergies)
+                @Html.DisplayFor(modelItem => item.Patients.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Doctors.Email)
+                @Html.DisplayFor(modelItem => item.Doctors.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)

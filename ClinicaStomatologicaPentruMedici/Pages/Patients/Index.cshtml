@@ -14,7 +14,9 @@
     <thead>
         <tr>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
                 @Html.DisplayNameFor(model => model.Patient[0].Name)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Patient[0].Phone)

@@ -21,8 +21,8 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Prescriptions
 
         public IActionResult OnGet()
         {
-        ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "Allergies");
-        ViewData["TreatmentId"] = new SelectList(_context.Treatment, "Id", "Description");
+            ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "Name");
+            ViewData["TreatmentId"] = new SelectList(_context.Treatment, "Id", "Name");
             return Page();
         }
 
@@ -32,10 +32,7 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Prescriptions
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            
 
             _context.Prescription.Add(Prescription);
             await _context.SaveChangesAsync();

@@ -123,15 +123,14 @@ namespace ClinicaStomatologicaPentruMedici.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            
 
+            // Create the user
             var user = CreateUser();
 
             await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
             var result = await _userManager.CreateAsync(user, Input.Password);
 
             if (result.Succeeded)
@@ -144,7 +143,7 @@ namespace ClinicaStomatologicaPentruMedici.Areas.Identity.Pages.Account
                 _context.Doctor.Add(Doctor);
                 await _context.SaveChangesAsync();
 
-                // Generate email confirmation token and send email
+                // Generate email confirmation token and send confirmation email
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -168,13 +167,16 @@ namespace ClinicaStomatologicaPentruMedici.Areas.Identity.Pages.Account
                 }
             }
 
+            // Add any errors from the user creation process to the ModelState
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
 
+            // Return the page if there were errors
             return Page();
         }
+
 
         private IdentityUser CreateUser()
         {

@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Doctors");
+    options.Conventions.AuthorizeFolder("/Patients");
+    options.Conventions.AuthorizeFolder("/Treatments");
+    options.Conventions.AuthorizeFolder("/Prescriptions");
+    options.Conventions.AuthorizeFolder("/Appointments");
 });
 builder.Services.AddDbContext<ClinicaStomatologicaPentruMediciContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ClinicaStomatologicaPentruMediciContext") ?? throw new InvalidOperationException("Connection string 'ClinicaStomatologicaPentruMediciContext' not found.")));
@@ -35,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -36,7 +36,7 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Patients
                 return NotFound();
             }
             Patient = patient;
-           ViewData["DoctorId"] = new SelectList(_context.Doctor, "Id", "Name");
+            ViewData["DoctorID"] = new SelectList(_context.Doctor, "Id", "Name");
             return Page();
         }
 

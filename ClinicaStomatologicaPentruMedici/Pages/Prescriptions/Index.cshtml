@@ -35,10 +35,10 @@
 @foreach (var item in Model.Prescription) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Patient.Allergies)
+                @Html.DisplayFor(modelItem => item.Patient.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Treatment.Description)
+                    @Html.DisplayFor(modelItem => item.Treatment.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TreatmentCost)

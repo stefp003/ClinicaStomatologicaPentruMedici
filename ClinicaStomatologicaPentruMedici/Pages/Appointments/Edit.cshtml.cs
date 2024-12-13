@@ -36,8 +36,8 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Appointments
                 return NotFound();
             }
             Appointment = appointment;
-           ViewData["DoctorID"] = new SelectList(_context.Doctor, "Id", "Email");
-           ViewData["PatientID"] = new SelectList(_context.Patient, "Id", "Allergies");
+           ViewData["DoctorID"] = new SelectList(_context.Doctor, "Id", "Name");
+           ViewData["PatientID"] = new SelectList(_context.Patient, "Id", "Name");
             return Page();
         }
 
