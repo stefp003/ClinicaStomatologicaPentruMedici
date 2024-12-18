@@ -143,6 +143,7 @@ namespace ClinicaStomatologicaPentruMedici.Areas.Identity.Pages.Account
                 _context.Doctor.Add(Doctor);
                 await _context.SaveChangesAsync();
 
+                var role = await _userManager.AddToRoleAsync(user, "Doctor");
                 // Generate email confirmation token and send confirmation email
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

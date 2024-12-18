@@ -28,7 +28,10 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Prescriptions
                 return NotFound();
             }
 
-            var prescription = await _context.Prescription.FirstOrDefaultAsync(m => m.Id == id);
+            var prescription = await _context.Prescription
+                .Include(p => p.Patient)  
+                .Include(p => p.Treatment)  
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (prescription == null)
             {
                 return NotFound();

@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClinicaStomatologicaPentruMedici.Data;
 using ClinicaStomatologicaPentruMedici.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClinicaStomatologicaPentruMedici.Pages.Treatments
 {
+    [Authorize(Roles = "Admin")]
+
     public class EditModel : PageModel
     {
         private readonly ClinicaStomatologicaPentruMedici.Data.ClinicaStomatologicaPentruMediciContext _context;

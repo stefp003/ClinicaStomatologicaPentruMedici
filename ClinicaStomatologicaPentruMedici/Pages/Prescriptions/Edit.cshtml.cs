@@ -36,8 +36,8 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Prescriptions
                 return NotFound();
             }
             Prescription = prescription;
-           ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "Allergies");
-           ViewData["TreatmentId"] = new SelectList(_context.Treatment, "Id", "Description");
+           ViewData["PatientId"] = new SelectList(_context.Patient, "Id", "Name");
+           ViewData["TreatmentId"] = new SelectList(_context.Treatment, "Id", "Name");
             return Page();
         }
 

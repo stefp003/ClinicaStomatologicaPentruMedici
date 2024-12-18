@@ -28,7 +28,9 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Patients
                 return NotFound();
             }
 
-            var patient = await _context.Patient.FirstOrDefaultAsync(m => m.Id == id);
+            var patient = await _context.Patient
+                .Include(p => p.Doctor)  
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (patient == null)
             {
                 return NotFound();

@@ -28,7 +28,10 @@ namespace ClinicaStomatologicaPentruMedici.Pages.Appointments
                 return NotFound();
             }
 
-            var appointment = await _context.Appointment.FirstOrDefaultAsync(m => m.ID == id);
+            var appointment = await _context.Appointment
+                .Include(p => p.Patients)  
+                .Include(p => p.Doctors)  
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (appointment == null)
             {
                 return NotFound();

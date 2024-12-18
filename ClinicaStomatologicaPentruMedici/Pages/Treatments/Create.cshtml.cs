@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ClinicaStomatologicaPentruMedici.Data;
 using ClinicaStomatologicaPentruMedici.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClinicaStomatologicaPentruMedici.Pages.Treatments
 {
+    [Authorize(Roles = "Admin")]
+
     public class CreateModel : PageModel
     {
         private readonly ClinicaStomatologicaPentruMedici.Data.ClinicaStomatologicaPentruMediciContext _context;
