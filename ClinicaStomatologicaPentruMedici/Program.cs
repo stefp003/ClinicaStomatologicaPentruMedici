@@ -10,7 +10,7 @@ builder.Services.AddAuthorization(options =>
    policy.RequireRole("Admin"));
 });
 // Add services to the container.
-builder.Services.AddRazorPages(options =>
+builder.Services.AddRazorPages(options =>// adaugat cu restrictii
 {
     options.Conventions.AuthorizeFolder("/Doctors");
     options.Conventions.AuthorizeFolder("/Patients");
